@@ -25,6 +25,7 @@ const SOUND = 1;
 class Test extends Component {
   constructor() {
     super();
+    this.allTests = this.createFullTestTable();
     this.state = {
       currentTest: this.getNewTest(null),
       prevTest: null,
@@ -33,12 +34,31 @@ class Test extends Component {
     };
   }
 
+  createFullTestTable() {
+    let table = KANA_TABLE.slice();
+    for (let i = 0; i < 2; i++)
+      table = table.concat(KANA_TABLE.slice());
+    return table;
+  }
+
   getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
 
   getNewTest(currentTest) {
+    let newTestRetrievalAttempt = 0;
     do {
-      var newTest = KANA_TABLE[this.getRandomInt(KANA_TABLE.length)];
-    } while (newTest === currentTest);
+      var newTestIndex = this.getRandomInt(this.allTests.length),
+          newTest = this.allTests[newTestIndex];
+      newTestRetrievalAttempt++;
+    } while (newTest === currentTest && newTestRetrievalAttempt < 3);
+
+    if (this.allTests.length > 1) {
+      if (newTestIndex < this.allTests.length - 1) {
+        this.allTests[newTestIndex] = this.allTests[this.allTests.length - 1];
+      }
+      this.allTests.pop();
+    } else if (this.allTests.length === 1) {
+      this.allTests = this.createFullTestTable();
+    }
 
     return newTest;
   }
