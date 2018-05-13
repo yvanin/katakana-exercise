@@ -1,0 +1,7 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans Japanese', serif;
+}

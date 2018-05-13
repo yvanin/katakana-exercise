@@ -1,0 +1,20 @@
+.kana {
+    padding: 30px;
+    font-size: 96px;
+}
+
+.test input {
+    font-size: 16px;
+    padding: 5px;
+    width: 60px;
+}
+
+.error input {
+    border: solid 3px red;
+}
+
+.action-help {
+    padding-top: 10px;
+    color: grey;
+    font-size: 12px;
+}
