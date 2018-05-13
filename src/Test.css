@@ -9,8 +9,12 @@
     width: 60px;
 }
 
+.success input {
+    border: solid 3px #32cd32;
+}
+
 .error input {
-    border: solid 3px red;
+    border: solid 3px #ff0000;
 }
 
 .action-help {

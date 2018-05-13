@@ -54,7 +54,10 @@ class Test extends Component {
 
   submitTest(testValue) {
     if (testValue.trim().toLowerCase() === this.state.currentTest[SOUND]) {
-      this.startNewTest();
+      this.setState({
+        className: 'success'
+      });
+      setTimeout(() => this.startNewTest(), 100);
     } else {
       this.setState({
         className: 'error'
@@ -74,7 +77,10 @@ class Test extends Component {
     if (e.key === 'Enter') {
       this.submitTest(e.target.value);
     } else if (e.key === ' ') {
-      this.startNewTest();
+      this.setState({
+        className: 'error'
+      });
+      setTimeout(() => this.startNewTest(), 100);
     }
   }
 
@@ -91,7 +97,7 @@ class Test extends Component {
                  onKeyPress={this.handleKeyPress.bind(this)} />
         </div>
         <p className="action-help">
-          To check press enter, to skip press space
+          Press enter to check your answer, press space to skip
         </p>
       </div>
     );
